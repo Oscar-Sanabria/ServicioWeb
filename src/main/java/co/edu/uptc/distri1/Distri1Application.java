@@ -12,8 +12,8 @@ public class Distri1Application extends SpringBootServletInitializer{
 	}
 	
 	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		// TODO Auto-generated method stub
-		return builder.sources(Distri1Application.class);
+		return application.sources(Distri1Application.class);
 	}
 }

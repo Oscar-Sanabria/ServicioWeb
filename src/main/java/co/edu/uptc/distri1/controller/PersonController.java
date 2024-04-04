@@ -11,7 +11,7 @@ import co.edu.uptc.distri1.model.Person;
 @RequestMapping("/persona")
 
 public class PersonController {
-    @GetMapping()
+    @GetMapping("/all")
     public Person getPersonRandom() {
         Person person = new Person();
         person.setName("Oscar");
