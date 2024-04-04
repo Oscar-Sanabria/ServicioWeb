@@ -10,8 +10,10 @@ public class Distri1Application extends SpringBootServletInitializer{
 	public static void main(String[] args) {
 		SpringApplication.run(Distri1Application.class, args);
 	}
+	
 	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
-		return application.sources(Distri1Application.class);
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		// TODO Auto-generated method stub
+		return builder.sources(Distri1Application.class);
 	}
 }
