@@ -26,11 +26,6 @@ public class PersonController {
         Person person = new Person();
         person.setName("Oscar");
         person.setLastname(coname);
-        try {
-            Thread.sleep(10000); // 10 segundos
-        } catch (InterruptedException e) {
-            System.err.println("Se interrumpió el hilo durante el retraso: " + e.getMessage());
-        }
         return person;
     }
 }
