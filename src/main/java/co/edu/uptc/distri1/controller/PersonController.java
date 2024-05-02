@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.uptc.distri1.model.Person;
 
 @RestController
-@RequestMapping
+@RequestMapping("/persona")
 
 public class PersonController {
-    @GetMapping
+    @GetMapping("/all")
     public Person getPersonRandom() {
         String coname = "";
         try {
@@ -27,5 +27,12 @@ public class PersonController {
         person.setName("Oscar");
         person.setLastname(coname);
         return person;
+    }
+    @GetMapping("/test")
+    public void getPersonRandom() {
+        for (int i = 0; i <= 1000000; i++) {
+            double raiz = Math.sqrt(i);
+            System.out.println("La raíz cuadrada de " + i + " es: " + raiz);
+        }
     }
 }
