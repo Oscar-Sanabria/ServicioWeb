@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.uptc.distri1.model.Person;
 
 @RestController
-@RequestMapping("/persona")
+@RequestMapping
 
 public class PersonController {
-    @GetMapping("/all")
+    @GetMapping
     public Person getPersonRandom() {
         String coname = "";
         try {
