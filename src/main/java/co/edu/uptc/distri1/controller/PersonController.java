@@ -29,7 +29,7 @@ public class PersonController {
         return person;
     }
     @GetMapping("/test")
-    public void getPersonRandom() {
+    public void getSqrt() {
         for (int i = 0; i <= 1000000; i++) {
             double raiz = Math.sqrt(i);
             System.out.println("La raíz cuadrada de " + i + " es: " + raiz);
