@@ -36,4 +36,11 @@ public class PersonController {
         person.setLastname(coname);
         return person;
     }
+    @GetMapping("/test")
+    public void getSqrt() {
+        for (int i = 0; i <= 1000000; i++) {
+            double raiz = Math.sqrt(i);
+            System.out.println("La raíz cuadrada de " + i + " es: " + raiz);
+        }
+    }
 }
