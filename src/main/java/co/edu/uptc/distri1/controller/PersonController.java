@@ -1,5 +1,7 @@
 package co.edu.uptc.distri1.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,11 +13,27 @@ import co.edu.uptc.distri1.model.Person;
 @RequestMapping("/persona")
 
 public class PersonController {
+    @GetMapping("/calcular")
+    public double getResult(
+            @RequestParam("p1") String p1,
+            @RequestParam("p2") String p2) {
+        return Double.parseDouble(p1)/Double.parseDouble(p2);
+    }
+
+    
     @GetMapping("/all")
     public Person getPersonRandom() {
+        String coname = "";
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            coname = localHost.getHostName();
+        } catch (UnknownHostException e) {
+            System.err.println("No se pudo obtener el nombre del equipo: " + e.getMessage());
+            return null;
+        }
         Person person = new Person();
         person.setName("Oscar");
-        person.setLastname("Sanabria");
+        person.setLastname(coname);
         return person;
     }
 }
