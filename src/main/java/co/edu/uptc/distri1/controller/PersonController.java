@@ -1,11 +1,14 @@
 package co.edu.uptc.distri1.controller;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.HashMap;
+import java.util.Map;
 
 import co.edu.uptc.distri1.model.Person;
 
@@ -13,11 +16,21 @@ import co.edu.uptc.distri1.model.Person;
 @RequestMapping("/persona")
 
 public class PersonController {
+    private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
+    private static final String podName = System.getenv("POD_NAME");
+
     @GetMapping("/calcular")
-    public double getResult(
-            @RequestParam("p1") String p1,
-            @RequestParam("p2") String p2) {
-        return Double.parseDouble(p1)/Double.parseDouble(p2);
+    public Map<String, Object> getResult(@RequestParam("p1") String p1, @RequestParam("p2") String p2) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            double result = Double.parseDouble(p1) / Double.parseDouble(p2);
+            response.put("result", result);
+        } catch (NumberFormatException e) {
+            logger.error("Error parsing input in pod: " + podName, e);
+            response.put("error", "Invalid input");
+        }
+        response.put("podName", podName);
+        return response;
     }
 
     
