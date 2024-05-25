@@ -29,7 +29,6 @@ public class PersonController {
             logger.error("Error parsing input in pod: " + podName, e);
             response.put("error", "Invalid input");
         }
-        response.put("podName", podName);
         return response;
     }
 
